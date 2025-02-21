@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Login - Inventory System</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <style>
+        body {
+            background-color: #e50012;
+            font-family: 'Nunito', sans-serif;
+        }
+        .login-card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 0px 6px 2px rgba(0,0,0,0.2);
+            max-width: 400px;
+            margin: 10vh auto;
+            padding: 2rem;
+        }
+        .form-control {
+            font-size: calc(0.65vw + 0.65vh);
+            color: rgb(0,0,0);
+            font-family: Nunito;
+            margin-bottom: 1rem;
+        }
+        .login-btn {
+            background-color: #e50012;
+            border: none;
+            color: white;
+            padding: 0.5rem 2rem;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: 0.3s;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        .login-btn:hover {
+            background-color: #cc0010;
+        }
+        .signup-btn {
+            background-color: white;
+            border: 2px solid #e50012;
+            color: #e50012;
+            padding: 0.5rem 2rem;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: 0.3s;
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+        .signup-btn:hover {
+            background-color: #fff5f5;
+        }
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .form-label {
+            font-weight: 600;
+            color: #333;
+            font-size: calc(0.6vw + 0.6vh);
+        }
+        .forgot-password {
+            text-align: right;
+            font-size: calc(0.55vw + 0.55vh);
+            color: #666;
+            text-decoration: none;
+            display: block;
+            margin-top: -0.5rem;
+            margin-bottom: 1rem;
+        }
+        .forgot-password:hover {
+            color: #e50012;
+        }
+        .error-message {
+            color: #e50012;
+            font-size: calc(0.55vw + 0.55vh);
+            margin-top: -0.5rem;
+            margin-bottom: 0.5rem;
+            display: none;
+        }
+        .modal-content {
+            border-radius: 15px;
+        }
+        .modal-header {
+            border-bottom: 2px solid rgba(0,0,0,0.1);
+        }
+        .modal-footer {
+            border-top: none;
+        }
+        .modal-title {
+            font-size: calc(0.8vw + 0.8vh);
+            color: rgb(0,0,0);
+            font-family: Nunito;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="login-card">
+            <div class="login-header">
+                <img src="assets/images/uniqlo_logo.png" style="height: 4.7vh; margin-bottom: 1.5rem;">
+                <h4 style="font-size: calc(0.8vw + 0.8vh); color:rgb(0,0,0); font-family: Nunito; font-weight: bold;">
+                    Inventory System Login
+                </h4>
+            </div>
+            
+            <form id="loginForm">
+                <div class="mb-3">
+                    <label class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Enter your username" required>
+                    <div class="error-message" id="username-error">Please enter a valid username</div>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                    <div class="error-message" id="password-error">Please enter your password</div>
+                </div>
+                
+                <div class="error-message" id="login-error">Invalid username or password</div>
+                
+                <a href="#" class="forgot-password">Forgot Password?</a>
+                
+                <button type="submit" class="login-btn">
+                    Login
+                </button>
+                
+                <button type="button" class="signup-btn" data-bs-toggle="modal" data-bs-target="#signupModal">
+                    Create New Account
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signupModalLabel">Create New Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="signupForm">
+                        <div class="mb-3">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="fullname" required>
+                            <div class="error-message" id="fullname-error">Please enter your full name</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                            <div class="error-message" id="email-error">Please enter a valid email address</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Username</label>
+                            <input type="text" class="form-control" id="new-username" required>
+                            <div class="error-message" id="new-username-error">Please enter a username</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input type="password" class="form-control" id="new-password" required>
+                            <div class="error-message" id="new-password-error">Password must be at least 8 characters</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirm-password" required>
+                            <div class="error-message" id="confirm-password-error">Passwords do not match</div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" form="signupForm" class="login-btn" style="width: auto">
+                        Sign Up
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Reset error messages
+            document.querySelectorAll('.error-message').forEach(elem => {
+                elem.style.display = 'none';
+            });
+            
+            // Validate inputs
+            if (!username || !password) {
+                if (!username) document.getElementById('username-error').style.display = 'block';
+                if (!password) document.getElementById('password-error').style.display = 'block';
+                return;
+            }
+            
+            
+            if (password.includes('.')) {
+                window.location.href = 'index.html';
+            } else {
+                document.getElementById('login-error').style.display = 'block';
+            }
+        });
+
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Reset error messages
+            document.querySelectorAll('.error-message').forEach(elem => {
+                elem.style.display = 'none';
+            });
+            
+            const fullname = document.getElementById('fullname').value;
+            const email = document.getElementById('email').value;
+            const username = document.getElementById('new-username').value;
+            const password = document.getElementById('new-password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            
+            // Validate inputs
+            let hasError = false;
+            
+            if (!fullname) {
+                document.getElementById('fullname-error').style.display = 'block';
+                hasError = true;
+            }
+            
+            if (!email || !email.includes('@')) {
+                document.getElementById('email-error').style.display = 'block';
+                hasError = true;
+            }
+            
+            if (!username) {
+                document.getElementById('new-username-error').style.display = 'block';
+                hasError = true;
+            }
+            
+            if (!password || password.length < 8) {
+                document.getElementById('new-password-error').style.display = 'block';
+                hasError = true;
+            }
+            
+            if (password !== confirmPassword) {
+                document.getElementById('confirm-password-error').style.display = 'block';
+                hasError = true;
+            }
+            
+            if (!hasError) {
+                
+                alert('Account created successfully! Please login.');
+                bootstrap.Modal.getInstance(document.getElementById('signupModal')).hide();
+                document.getElementById('signupForm').reset();
+            }
+        });
+    </script>
+</body>
+</html>
